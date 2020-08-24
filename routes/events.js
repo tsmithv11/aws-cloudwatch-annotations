@@ -2,16 +2,16 @@ var Annotations = require('../lib/annotations');
 var cloudwatch = require('../lib/cloudwatch');
 
 
-const gremlinRoutes = (app, fs) => {
+const eventRoutes = (app, fs) => {
 	//POST
-	app.post('/gremlins', (req, res) => {
+	app.post('/events', (req, res) => {
 		console.log(req.body.time);
 		
-		let name = 'Online-Boutique-Webhooks-v2';
-    		let type = 'vertical';
+		let name = req.body.dashboardName;
+    		let type = req.body.type;
 
     		cloudwatch.getDashboard(name).then(data => {
-        		var body = Annotations.addTo(data, type, { title: 'Gremlin '+req.body.attackType+" "+req.body.attackStatus, 'widget-title':'CPU Utilization', value: req.body.time });
+        		var body = Annotations.addTo(data, type, { title: req.body.eventTitle, 'widget-title':req.body.widgetTitle, value: req.body.time });
         		return cloudwatch.putDashboard(name, body).catch((err) => {
             			console.error(err.message);
             			process.exit(1);
@@ -21,9 +21,9 @@ const gremlinRoutes = (app, fs) => {
         		process.exit(1);
     		})
 
-		res.status(200).send('New Gremlin webhook added');
+		res.status(200).send('New annotation added');
 	});
 
 };
 
-module.exports = gremlinRoutes;
+module.exports = eventRoutes;
