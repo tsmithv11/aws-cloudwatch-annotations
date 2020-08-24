@@ -1,10 +1,10 @@
-const userRoutes = require('./gremlins');
+const userRoutes = require('./events');
 
 const appRouter = (app, fs) => {
 
     // default route
     app.get('/', (req, res) => {
-        res.send('welcome to the development api-server');
+        res.send('Welcome to the CloudWatch annotation API');
     });
 
     // // other routes
