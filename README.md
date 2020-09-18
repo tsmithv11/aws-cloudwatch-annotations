@@ -30,8 +30,9 @@ Use the following format for your JSON:
 ```json
 {
     "dashboardName":"${dasboardName}",
-    "type":"${vertical_or_horizontal}",
-    "widgetTitle":"${title_of_widget_to_update}",
-    "time":"${time_or_value}"
+    "type":"${verticalOrHorizontal}",
+    "widgetTitle":"${titleOfWidgetToUpdate}",
+    "time":"${timeOrValue}"
+    "eventTitle":"${titleOfAnnotation}"
 }
 ```
