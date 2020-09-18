@@ -32,7 +32,7 @@ Use the following format for your JSON:
     "dashboardName":"${dasboardName}",
     "type":"${verticalOrHorizontal}",
     "widgetTitle":"${titleOfWidgetToUpdate}",
-    "time":"${timeOrValue}"
+    "time":"${timeOrValue}",
     "eventTitle":"${titleOfAnnotation}"
 }
 ```
